@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Truong Bao Huy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc, #a0e9fd);
+      color: #222;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .logo span {
+      background: black;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 5px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    nav a.active,
+    nav a:hover {
+      background: #09f482;
+      color: white;
+      box-shadow: 0 2px 8px rgba(0, 119, 255, 0.2);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-icons a {
+      font-size: 20px;
+      color: #333;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #0077ff;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      nav ul.active {
+        display: flex;
+        padding: 10px 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .section {
+      padding: 80px 40px;
+    }
+
+    .home-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .avatar img {
+      width: 250px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 25px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .avatar img:hover {
+      transform: scale(1.05);
+    }
+
+    .intro {
+      max-width: 600px;
+      animation: fadeSlideUp 1s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+      text-align: center;
+    }
+
+    @keyframes fadeSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .typing-text {
+      font-size: 36px;
+      font-weight: 700;
+      background: linear-gradient(270deg, #ffd6e8, #a1c4fd, #e2d1f9, #fffcc2, #c2ffd8);
+      background-size: 1000% 1000%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 6s linear infinite;
+      white-space: pre-wrap;
+      min-height: 110px;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .intro p {
+      font-size: 16px;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 10px;
+      background: #0077ff;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #005fd1;
+    }
+
+    .btn.outline {
+      background: transparent;
+      border: 2px solid #0077ff;
+      color: #0077ff;
+    }
+
+    .btn.outline:hover {
+      background: #0077ff;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Truong Bao Huy <span>dev</span></div>
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="interset.html">Interest</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/share/1A5z9y3F2s/?mibextid=wwXIfr" target="_blank"><i
+          class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/tb.yuh265?igsh=MXN4MjU1NzRjZHhubQ%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </header>
+
+  <section id="home" class="section">
+    <div class="home-content">
+      <div class="avatar">
+        <img src="TruongBaoHuy.jpg" alt="My Avatar" />
+      </div>
+      <div class="intro">
+        <h1 id="typing" class="typing-text"></h1>
+        <p>I am currently a senior student and looking for a job. I also have a passion for creating beautiful, simple,
+          and attractive websites. I am committed to constant self-improvement to become a better developer.</p>
+        <div class="buttons">
+          <a href="about.html" class="btn">View My Info</a>
+          <a href="contact.html" class="btn outline">Contact Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    const text = "Hi, my name is Truong Bao Huy.\nAnd I am a Frontend and Backend Developer.";
+    let i = 0;
+    const typingEl = document.getElementById("typing");
+
+    function typeWriter() {
+      if (i < text.length) {
+        typingEl.innerHTML += text.charAt(i) === '\n' ? "<br/>" : text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+      }
+    }
+
+    window.onload = () => {
+      typeWriter();
+    };
+  </script>
+
+</body>
+
+</html>

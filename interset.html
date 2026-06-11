@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Truong Bao Huy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e0c3fc, #8ec5fc, #a0e9fd);
+            color: #222;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .logo span {
+            background: black;
+            color: white;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        nav a.active,
+        nav a:hover {
+            background: #09f482;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 119, 255, 0.2);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .social-icons a {
+            font-size: 20px;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #0077ff;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 10px 0;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-end;
+            }
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to right, #e0c3fc, #8ec5fc, #a0e9fd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+            border-bottom: 1px solid #ccc;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .image img {
+            width: 300px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin: 20px;
+        }
+
+        .text {
+            max-width: 500px;
+            margin: 20px;
+        }
+
+        .text h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .text p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .text a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0077ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .text a:hover {
+            background: #005fd1;
+        }
+
+        @media (max-width: 768px) {
+
+            .section,
+            .section.reverse {
+                flex-direction: column;
+            }
+        }
+
+        footer {
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #444;
+            border-top: 1px solid #ddd;
+            margin-top: 40px;
+            background: linear-gradient(to right, #e0c3fc, #8ec5fc, #a0e9fd);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Truong Bao Huy <span>dev</span></div>
+        <nav>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="interset.html">Interest</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/1A5z9y3F2s/?mibextid=wwXIfr" target="_blank"><i
+                    class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/tb.yuh265?igsh=MXN4MjU1NzRjZHhubQ%3D%3D&utm_source=qr" target="_blank"><i
+                    class="fab fa-instagram"></i></a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Hello! Welcome To My World</h1> <br>
+        <p>
+            After long and stressful hours of studying or working on
+            projects, I often find time to entertain myself through simple
+            pleasures. <br>
+            Watching movies and listening to music helps me
+            relax and recharge.<br>
+            I hope that these hobbies not only bring joy to me, but also
+            spark your interest. <br>
+            That’s why I want to share them here, so everyone can explore
+            and enjoy them too.
+        </p>
+
+    </section>
+
+    <section class="section">
+        <div class="image">
+            <img src="nexflix.png" alt="Vieon" />
+        </div>
+        <div class="text">
+            <h1>Watch movies on Netflix</h1>
+            <p>I enjoy spending my free time watching movies on the Netflix
+                platform. It offers a wide variety of films, from exciting
+                blockbusters to heartfelt dramas, making it easy to find
+                something that suits my mood. The quality and selection
+                always keep me entertained. I will watch movies on this
+                Netflix platform. I see there are many good movies here.</p>
+            <a href="https://www.netflix.com/vn/" target="_blank">See now</a>
+        </div>
+    </section>
+
+    <section class="section reverse">
+        <div class="image">
+            <img src="sportify.png" alt="Spotify" />
+        </div>
+        <div class="text">
+            <h1>Listen to music on Spotify</h1>
+            <p>Sometimes, watching movies can feel a bit repetitive, so I
+                like to switch things up by listening to music on Spotify. I
+                usually choose light chill songs that help me relax and
+                refresh my mind. It’s a great way to unwind and stay
+                motivated during long study or work sessions. Sometimes
+                watching movies is boring, right? Sometimes I
+                listen to music on Spotify with light chill
+                songs...</p>
+            <a href="https://open.spotify.com/" target="_blank">Listen
+                now</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="image">
+            <img src="hhtrungquoc.png" alt="Hoạt Hình" />
+        </div>
+        <div class="text">
+            <h1> Cartoon</h1>
+            <p>In the evening, after finishing all my work or projects, I
+                like to relax by watching cartoons. It helps me unwind and
+                clear my mind.
+
+                This simple habit has become my favorite way to end the day
+                peacefully. In the evening after finishing all my work
+                or projects.</p>
+            <a href="https://hhkungfu.ee/" target="_blank">See now</a>
+        </div>
+    </section>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Toggle menu mobile
+        function toggleMenu() {
+            document.getElementById('nav-links').classList.toggle('active');
+        }
+    </script>
+
+    <footer>
+        <p>Thank you for taking the time to read through my CV. If you have
+            any questions, please email me in the Contact Us section.</p>
+    </footer>
+</body>
+
+</html>

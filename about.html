@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>Truong Bao Huy</title>
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (Full icon support) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-wRmT5z9Pz1IFJkfr1vOBMuq8ykU3rmN8aJPvQ8X3+7Jh96lVfwKch0bqSfqOv+RCNsW7o2GiMZ8xdHl4j3zF0w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .logo span {
+      background: black;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    nav a.active,
+    nav a:hover {
+      background: #09f482;
+      color: white;
+      box-shadow: 0 2px 8px rgba(0, 119, 255, 0.2);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .social-icons a {
+      font-size: 20px;
+      color: #333;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #0077ff;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+      }
+
+      nav li {
+        width: 100%;
+      }
+
+      nav a {
+        display: block;
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+      }
+
+      .social-icons {
+        display: none;
+      }
+    }
+
+    .section {
+      padding: 60px 40px;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #222;
+    }
+
+    .about-content .block {
+      margin-bottom: 30px;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .about-content h3 {
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .about-content ul {
+      list-style: disc;
+      margin-left: 20px;
+    }
+
+    #info-sections {
+      background: #f8f9fc;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .info-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-card h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .info-card p,
+    .info-card li {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .info-card ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+
+    h2.gradient-title {
+      font-size: 40px;
+      font-weight: 700;
+      text-align: center;
+      background: linear-gradient(270deg, #00fff7, #0072ff, #00d2ff, #a0f0ff, #00fff7);
+      background-size: 800% 800%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientGlow 5s ease infinite, scaleUpDown 2.5s ease-in-out infinite;
+      /* reset animation fadeInScale cũ nếu có */
+    }
+
+    @keyframes gradientGlow {
+      0% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 5px #00c6ff);
+        opacity: 0.8;
+      }
+
+      50% {
+        background-position: 100% 50%;
+        filter: drop-shadow(0 0 15px #0072ff);
+        opacity: 1;
+      }
+
+      100% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 5px #00c6ff);
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes scaleUpDown {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Truong Bao Huy <span>dev</span></div>
+    <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+    <nav id="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="interset.html">Interest</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="social-icons">
+
+      <a href="https://www.facebook.com/share/1A5z9y3F2s/?mibextid=wwXIfr" target="_blank"><i
+          class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/tb.yuh265?igsh=MXN4MjU1NzRjZHhubQ%3D%3D&utm_source=qr" target="_blank"><i
+          class="fab fa-instagram"></i></a>
+    </div>
+  </header>
+
+  <!-- Original About Section -->
+  <!-- Original About Section -->
+  <section id="about" class="section">
+    <h2 data-aos="zoom-in" class="gradient-title">PERSONAL INFORMATION</h2>
+    <div class="about-content">
+      <div class="block" data-aos="fade-up" data-aos-delay="0">
+        <h3>🧑‍💻 Personal Information</h3>
+        <p><strong>Date of birth 🎂:</strong> June 2, 2005</p>
+        <p><strong>Address 📍:</strong> Dai Thang hamlet, Phuoc An commune, Dong Nai city</p>
+        <p><strong>Phone 📞:</strong> 0337645520</p>
+        <p><strong>Email 📧:</strong> baohuy05hp1@gmail.com</p>
+      </div>
+      <div class="block" data-aos="fade-up" data-aos-delay="100">
+        <h3>🎯 Career objectives</h3>
+        <p><strong>Short-term objectives ⏳:</strong> Become a Frontend and
+          Backend
+          Developer excellent.</p>
+        <p><strong>Long-term objectives 🚀:</strong> This helped the company become one of the leading software
+          companies in Vietnam and achieve significant profits.</p>
+      </div>
+      <div class="block" data-aos="fade-up" data-aos-delay="200">
+        <h3> 🏆 Honours/ Achievements</h3>
+        <ul>
+          <li>March 2025: <br>
+            Participate in the CV writing program for students and share
+            interview experiences
+            and internship guidance program for students to get acquainted
+            with the working environment
+            organized by the College of Information Technology</li>
+          <li>November 2024: <br>
+            Participate in the Workshop program organized by the College of
+            Information Technology</li>
+        </ul>
+      </div>
+      <div class="block" data-aos="fade-up" data-aos-delay="300">
+        <h3> 💼 Works experience </h3>
+        <ul>
+          <li>Part-time (Now -March 2024 ): <br>
+            restaurant staff <br>
+            <strong>Experience:</strong> <br>
+            Excellent communication skills, flexible problem-solving abilities, teamwork skills, and a dedicated service attitude help to improve service quality.
+          </li>
+          <li>Part-time (2022 -August 2023 ): <br>
+            - Bartender <br>
+            <strong>Experience:</strong> <br>
+            Communication skills, Aesthetic
+            sense, Attention to detail
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Modern Cards Section with AOS -->
+  <section class="section" id="info-sections">
+    <h2 data-aos="fade-up" style="text-align:center; margin-bottom: 40px;">More About Me</h2>
+    <div class="info-grid">
+
+      <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>🧑‍🤝‍🧑 Social activities and Interests</h3>
+        <p> <strong>Activities:</strong> <br>
+          - 🤝 Help distribute gifts to orphans <br>
+          - 🤝 Blood donation <br>
+          - 🌱 Volunteer join green summer <br>
+          - 🤝 Participate in volunteer activities</p>
+
+        <p> <strong>Interests:</strong> <br>
+          - ⚽ Play volleyball and football <br>
+          - 🎧 Listen to music <br>
+          - 🍿 Watch a movie <br>
+          - 💻 Programming </p>
+      </div>
+
+      <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>🛠 Skills</h3>
+        <ul>
+          <li>HTML, CSS, JavaScript</li>
+          <li>Laravel</li>
+          <li>Version control: Git & GitHub</li>
+          <li>Tool: Smart Git, cmder, notepad++, Gitbash</li>
+          <li>Teamwork: Listening, Collaboration skills, Encouragement,
+            Coordination, <br>
+            Adaptability: Analysis, Proactivity, <br>
+            Work ethic: Responsibility, <br>
+            Hardworking, Teamwork, Time management: Planning</li>
+        </ul>
+      </div>
+
+      <div class="info-card" data-aos="fade-up" data-aos-delay="300">
+        <h3>🎓 Education Background</h3>
+        <p> - 🏫 Thu Duc college of technology
+          <br> - 📚 Major: Information Technology
+          <br> - 🎓 Bacheior of information technology (Frontend and Backend
+          Developer)
+          <br> - 📅 Date: December 2024 - June 2026
+          <br> - 📊 GPA: 8.0/10
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+  </script>
+
+  <!-- Active link + menu toggle script -->
+  <script>
+    const links = document.querySelectorAll("nav a");
+    const toggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    window.addEventListener("scroll", () => {
+      const fromTop = window.scrollY;
+      links.forEach(link => {
+        const section = document.querySelector(link.getAttribute("href"));
+        if (section && section.offsetTop <= fromTop + 60 && section.offsetTop + section.offsetHeight > fromTop + 60) {
+          links.forEach(l => l.classList.remove("active"));
+          link.classList.add("active");
+        }
+      });
+    });
+
+    toggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+  </script>
+</body>
+
+</html>
